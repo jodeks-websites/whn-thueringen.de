@@ -14,7 +14,7 @@ const config = {
       strict: true,
     }),
     paths: {
-      base: dev ? '' : '/whn-thueringen.de',
+      base: dev ? '' : '/',
     }
   },
   preprocess: vitePreprocess()

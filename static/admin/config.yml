@@ -1,0 +1,107 @@
+backend:
+  name: github
+  repo: whn-thueringen/whn-thueringen.github.io
+  branch: main
+  # base_url wird nach Cloudflare-Migration auf den OAuth-Worker gesetzt:
+  # base_url: https://oauth.whn-thueringen.de
+
+media_folder: static/images
+public_folder: /images
+
+locale: de
+
+collections:
+  - name: news
+    label: News
+    label_singular: News-Eintrag
+    folder: src/content/news
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{publishedAt}}-{{slug}}"
+    summary: "{{publishedAt}} – {{title}}"
+    sortable_fields: [publishedAt]
+    view_filters:
+      - label: Neueste zuerst
+        field: publishedAt
+        pattern: "2025|2026"
+    fields:
+      - label: "Veröffentlichungsdatum (für Sortierung)"
+        name: publishedAt
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD.MM.YYYY"
+        time_format: false
+        hint: "Wird für die Reihenfolge auf der Website genutzt. Neueste oben."
+      - label: "Anzeigedatum"
+        name: date
+        widget: string
+        hint: "Freitext, z.B. \"Oktober 2025 | Erfurt\" oder \"27.10.2024\""
+      - label: "Titel"
+        name: title
+        widget: string
+      - label: "Text"
+        name: description
+        widget: text
+      - label: "Medien"
+        name: media
+        widget: list
+        required: false
+        default: []
+        fields:
+          - label: "Typ"
+            name: type
+            widget: select
+            options:
+              - { label: "Bild", value: "image" }
+              - { label: "Video (lokal)", value: "video" }
+            default: "image"
+          - label: "Bild/Video-Datei"
+            name: src
+            widget: image
+            required: false
+            hint: "Für lokale Bilder und Videos. Für YouTube unten die ID eintragen."
+          - label: "Alt-Text"
+            name: alt
+            widget: string
+            required: false
+            hint: "Kurze Beschreibung des Bildes (für Barrierefreiheit)"
+          - label: "YouTube-ID"
+            name: youtubeId
+            widget: string
+            required: false
+            hint: "Nur für YouTube-Videos, z.B. 'dQw4w9WgXcQ' aus der URL"
+          - label: "Video-Vorschaubild"
+            name: poster
+            widget: image
+            required: false
+            hint: "Optionales Vorschaubild für lokale Videos"
+
+  - name: documents
+    label: Dokumente
+    label_singular: Dokument
+    folder: src/content/documents
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - label: "Titel"
+        name: title
+        widget: string
+      - label: "Beschreibung"
+        name: description
+        widget: string
+      - label: "PDF-Datei"
+        name: link
+        widget: file
+        media_folder: /static/downloads
+        public_folder: /downloads
+        hint: "PDF-Datei hochladen"
+      - label: "Link-Text"
+        name: linkTitle
+        widget: string
+        hint: "z.B. \"Download Satzung\""
