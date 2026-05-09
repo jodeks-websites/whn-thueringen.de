@@ -13,6 +13,12 @@ const config = {
     }),
     paths: {
       base: '',
+    },
+    prerender: {
+      handleHttpError: ({ path, message }) => {
+        if (path.startsWith('/downloads/')) return;
+        throw new Error(message);
+      }
     }
   },
   preprocess: vitePreprocess()
