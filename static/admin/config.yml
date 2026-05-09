@@ -2,8 +2,7 @@ backend:
   name: github
   repo: whn-thueringen/whn-thueringen.github.io
   branch: main
-  # base_url wird nach Cloudflare-Migration auf den OAuth-Worker gesetzt:
-  # base_url: https://oauth.whn-thueringen.de
+  base_url: https://sveltia-cms-auth.jode13.workers.de
 
 media_folder: static/images
 public_folder: /images
