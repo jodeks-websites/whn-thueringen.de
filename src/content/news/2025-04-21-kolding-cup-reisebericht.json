@@ -10,7 +10,6 @@
     { "type": "image", "src": "/images/kolding_cup/gruppenbild_4.webp", "alt": "Bild" },
     { "type": "image", "src": "/images/kolding_cup/eröffnungsfeier.webp", "alt": "Bild" },
     { "type": "image", "src": "/images/kolding_cup/podium.webp", "alt": "Bild" },
-    { "type": "image", "src": "/images/kolding_cup/werbungstafel.webp", "alt": "Bild" },
-    { "type": "video", "src": "/images/kolding_cup/highlights.mp4", "alt": "Highlights Video" }
+    { "type": "image", "src": "/images/kolding_cup/werbungstafel.webp", "alt": "Bild" }
   ]
 }

@@ -54,13 +54,12 @@ collections:
             widget: select
             options:
               - { label: "Bild", value: "image" }
-              - { label: "Video (lokal)", value: "video" }
             default: "image"
-          - label: "Bild/Video-Datei"
+          - label: "Bild"
             name: src
             widget: image
             required: false
-            hint: "Für lokale Bilder und Videos. Für YouTube unten die ID eintragen."
+            hint: "Bilddatei hochladen (max. 25 MB). Für Videos bitte YouTube-ID unten eintragen."
           - label: "Alt-Text"
             name: alt
             widget: string
