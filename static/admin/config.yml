@@ -10,6 +10,7 @@ public_folder: /images
 locale: de
 
 collections:
+  # ── News ──────────────────────────────────────────────────────────────────
   - name: news
     label: News
     label_singular: News-Eintrag
@@ -76,6 +77,7 @@ collections:
             required: false
             hint: "Optionales Vorschaubild für lokale Videos"
 
+  # ── Dokumente ─────────────────────────────────────────────────────────────
   - name: documents
     label: Dokumente
     label_singular: Dokument
@@ -103,3 +105,196 @@ collections:
         name: linkTitle
         widget: string
         hint: "z.B. \"Download Satzung\""
+
+  # ── Projekte ──────────────────────────────────────────────────────────────
+  - name: projekte
+    label: Projekte
+    label_singular: Projekt
+    folder: src/content/projekte
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{publishedAt}}-{{slug}}"
+    summary: "{{publishedAt}} – {{title}}"
+    sortable_fields: [publishedAt]
+    fields:
+      - label: "Datum (für Sortierung)"
+        name: publishedAt
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD.MM.YYYY"
+        time_format: false
+        hint: "Bestimmt die Reihenfolge auf der Projektseite. Neueste oben."
+      - label: "Anzeigedatum"
+        name: date
+        widget: string
+        hint: "Freitext, z.B. \"27.10.2024 | Erfurt\""
+      - label: "Titel"
+        name: title
+        widget: string
+      - label: "Beschreibung"
+        name: description
+        widget: text
+      - label: "Link (optional)"
+        name: link
+        widget: string
+        required: false
+        hint: "z.B. https://www.betterplace.org/..."
+      - label: "Link-Text"
+        name: linkText
+        widget: string
+        required: false
+        hint: "z.B. \"Unterstützen\""
+      - label: "Bilder"
+        name: images
+        widget: list
+        required: false
+        default: []
+        fields:
+          - label: "Bild"
+            name: src
+            widget: image
+          - label: "Alt-Text"
+            name: alt
+            widget: string
+            required: false
+
+  # ── Unterstützer ──────────────────────────────────────────────────────────
+  - name: unterstuetzer
+    label: Unterstützer
+    label_singular: Unterstützer
+    folder: src/content/unterstuetzer
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    summary: "{{name}}"
+    fields:
+      - label: "Name"
+        name: name
+        widget: string
+        hint: "Vollständiger Name der Organisation oder Person"
+      - label: "Website"
+        name: href
+        widget: string
+        hint: "URL der Website, z.B. https://www.beispiel.de/"
+      - label: "Logo"
+        name: logo
+        widget: image
+        hint: "Logo-Datei hochladen (PNG, SVG oder WebP empfohlen)"
+
+  # ── Vorstand ──────────────────────────────────────────────────────────────
+  - name: vorstand
+    label: Vorstand
+    label_singular: Vorstandsmitglied
+    folder: src/content/vorstand
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    summary: "{{name}}"
+    fields:
+      - label: "Name"
+        name: name
+        widget: string
+      - label: "Rolle"
+        name: role
+        widget: string
+        required: false
+        hint: "z.B. \"1. Vorsitzender\" oder \"Kassenwartin\""
+      - label: "Foto"
+        name: photo
+        widget: image
+        required: false
+
+  # ── Seiteninhalte (Einzeldateien) ─────────────────────────────────────────
+  - name: seiteninhalte
+    label: Seiteninhalte
+    files:
+      - name: leitthemen
+        label: Leitthemen („Darin sind wir stark")
+        file: src/content/leitthemen.json
+        format: json
+        fields:
+          - label: "Abschnittsüberschrift"
+            name: sectionTitle
+            widget: string
+            hint: "Überschrift des Carousel-Abschnitts auf der Startseite"
+          - label: "Leitthemen"
+            name: items
+            widget: list
+            hint: "Reihenfolge = Anzeigereihenfolge im Carousel"
+            fields:
+              - label: "Überschrift"
+                name: title
+                widget: string
+              - label: "Beschreibung"
+                name: description
+                widget: text
+
+      - name: einstellungen
+        label: Impressum & Bankverbindung
+        file: src/content/einstellungen.json
+        format: json
+        fields:
+          - label: "Bankverbindung"
+            name: bank
+            widget: object
+            fields:
+              - label: "Kontoinhaber"
+                name: accountHolder
+                widget: string
+              - label: "IBAN"
+                name: iban
+                widget: string
+              - label: "BIC"
+                name: bic
+                widget: string
+              - label: "QR-Code Bild"
+                name: qrCode
+                widget: image
+                hint: "QR-Code für die Banküberweisung"
+          - label: "Impressum"
+            name: impressum
+            widget: object
+            fields:
+              - label: "Vereinsname"
+                name: vereinsname
+                widget: string
+              - label: "Ansprechpartner/in"
+                name: ansprechpartner
+                widget: string
+              - label: "Telefon"
+                name: telefon
+                widget: string
+                hint: "z.B. +49 176 44415740"
+              - label: "E-Mail"
+                name: email
+                widget: string
+              - label: "Adresszusatz"
+                name: adressZusatz
+                widget: string
+                required: false
+                hint: "z.B. \"c/o Steffi Günther\""
+              - label: "Straße & Hausnummer"
+                name: strasse
+                widget: string
+              - label: "PLZ"
+                name: plz
+                widget: string
+              - label: "Ort"
+                name: ort
+                widget: string
+              - label: "Land"
+                name: land
+                widget: string
+              - label: "Vertreten durch"
+                name: vertretung
+                widget: string
+                hint: "z.B. \"Ruben Arnold & Steffen Ahrens\""
+              - label: "Steuernummer"
+                name: steuernummer
+                widget: string

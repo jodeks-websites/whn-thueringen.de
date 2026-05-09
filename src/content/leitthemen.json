@@ -1,0 +1,15 @@
+{
+  "sectionTitle": "Darin sind wir stark",
+  "items": [
+    { "title": "Gleichberechtigung", "description": "Wir fördern aktiv Mädchen im Handballsport und schaffen Chancengleichheit." },
+    { "title": "Teamgeist", "description": "Wir fördern den Zusammenhalt und die Zusammenarbeit im Team." },
+    { "title": "Fairness", "description": "Wir legen großen Wert auf Fairplay und Respekt gegenüber allen Beteiligten." },
+    { "title": "Engagement", "description": "Wir unterstützen die kontinuierliche Entwicklung der Spielerinnen." },
+    { "title": "Nachhaltigkeit", "description": "Wir achten darauf, dass unsere Angebote langfristig wirken." },
+    { "title": "Integration", "description": "Wir fördern die Teilhabe von Menschen unterschiedlicher Hintergründe." },
+    { "title": "Förderung", "description": "Vielfältige Möglichkeiten zur individuellen Förderung jeder Spielerin." },
+    { "title": "Entwicklung junger Talente", "description": "Talentierte Spielerinnen sollen bestmöglich entwickelt werden." },
+    { "title": "Breitensport stärken", "description": "Zugang zum Handballsport für viele Mädchen und lebenslanges Engagement im Sport." },
+    { "title": "Persönlichkeitsentwicklung", "description": "Entwicklung von sozialen Kompetenzen wie Selbstbewusstsein und Teamfähigkeit." }
+  ]
+}

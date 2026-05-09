@@ -1,27 +1,16 @@
 <script lang="ts">
   import WaveTop from './WaveTop.svelte';
   import WaveBottom from './WaveBottom.svelte';
-
   import { base } from '$app/paths';
 
-  interface ContentProps {
-    imgSrc: string;
-    imgSrcAlt: string;
-    title: string;
+  interface Vorstandsmitglied {
+    name: string;
+    role?: string;
+    photo?: string;
   }
 
-  const contents: ContentProps[] = [
-    {
-      imgSrc: `${base}/images/Steffen_Ahrens-no_logo.webp`,
-      imgSrcAlt: 'Steffen Ahrens',
-      title: 'Steffen Ahrens',
-    },
-    {
-      imgSrc: `${base}/images/placeholder.png`,
-      imgSrcAlt: 'Steffi Günther',
-      title: 'Steffi Günther',
-    }
-  ];
+  const modules = import.meta.glob<Vorstandsmitglied>('/src/content/vorstand/*.json', { eager: true, import: 'default' });
+  const mitglieder = Object.values(modules);
 </script>
 
 <WaveTop />
@@ -29,12 +18,17 @@
   <section class="container" id="team">
     <h2 class="text-center mb-4">Vorstand</h2>
     <div class="row justify-content-center">
-      {#each contents as content}
+      {#each mitglieder as mitglied}
         <div class="col-md-4 mb-4">
           <div class="card-content">
-            <img src={content.imgSrc} class="card-img-top-content" alt={content.imgSrcAlt} loading="lazy" />
+            {#if mitglied.photo}
+              <img src={base + mitglied.photo} class="card-img-top-content" alt={mitglied.name} loading="lazy" />
+            {/if}
             <div class="card-body text-center">
-              <h5 class="card-title">{content.title}</h5>
+              <h5 class="card-title">{mitglied.name}</h5>
+              {#if mitglied.role}
+                <p class="card-text text-muted">{mitglied.role}</p>
+              {/if}
             </div>
           </div>
         </div>
