@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: whn-thueringen/whn-thueringen.github.io
+  repo: jodeks-websites/whn-thueringen.de
   branch: main
   base_url: https://sveltia-cms-auth.jode13.workers.de
 
