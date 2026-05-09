@@ -2,7 +2,7 @@ backend:
   name: github
   repo: jodeks-websites/whn-thueringen.de
   branch: main
-  base_url: https://sveltia-cms-auth.jode13.workers.de
+  base_url: https://sveltia-cms-auth.jode13.workers.dev
 
 media_folder: static/images
 public_folder: /images
